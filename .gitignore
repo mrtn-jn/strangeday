@@ -1,0 +1,23 @@
+# Ignore everything at the WordPress site root by default.
+/*
+
+# Keep repository metadata and project docs.
+!/.gitignore
+!/docs/
+!/docs/**
+
+# Keep only the custom Strangeday theme from wp-content.
+!/wp-content/
+/wp-content/*
+!/wp-content/themes/
+/wp-content/themes/*
+!/wp-content/themes/strangeday/
+!/wp-content/themes/strangeday/**
+
+# Ignore local/build artifacts inside the theme.
+/wp-content/themes/strangeday/node_modules/
+/wp-content/themes/strangeday/vendor/
+
+# OS/editor noise.
+.DS_Store
+Thumbs.db
