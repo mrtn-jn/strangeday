@@ -13,10 +13,15 @@
 /wp-content/themes/*
 !/wp-content/themes/strangeday/
 !/wp-content/themes/strangeday/**
+!/wp-content/plugins/
+/wp-content/plugins/*
+!/wp-content/plugins/strangeday-core/
+!/wp-content/plugins/strangeday-core/**
 
 # Ignore local/build artifacts inside the theme.
 /wp-content/themes/strangeday/node_modules/
 /wp-content/themes/strangeday/vendor/
+/wp-content/plugins/strangeday-core/vendor/
 
 # OS/editor noise.
 .DS_Store

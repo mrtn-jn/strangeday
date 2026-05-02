@@ -17,7 +17,7 @@ La lectura del sitio debe sentirse editorial, lateral y contextual: la imagen pr
 - El sitio se construira como un nuevo tema FSE creado con el plugin Create Block Theme.
 - La logica de la interfaz de tres columnas se implementara para responder al contenido de una unidad principal propia del proyecto.
 - Para la interactividad del frontend, la direccion actual es usar la Interactivity API de WordPress como capa de estado y coordinacion entre columnas.
-- ACF se usara para definir los custom post types y sus campos.
+- ACF se usara para definir campos y relaciones, mientras que la definicion base de CPTs vivira en un plugin core propio del proyecto.
 - La experiencia principal de Strangeday no se montara sobre el tipo `post` nativo, para no mezclar este sistema editorial con un posible blog clasico futuro.
 
 ## Modelo de contenido
@@ -36,7 +36,7 @@ Representa una pieza musical relacionada a una `photo`.
 
 Este contenido alimentara la segunda columna del layout.
 
-### 3. `recipes`
+### 3. `recipe`
 
 Representa una receta o plato relacionado a una `photo`.
 
@@ -49,14 +49,14 @@ La relacion inicial propuesta es:
 - `photo` sera el nodo principal.
 - un `photo` podra relacionarse con:
   - cero o un `music`
-  - cero o un `recipes`
-- `music` y `recipes` funcionaran como contenidos complementarios que se abren desde `photo`.
+  - cero o un `recipe`
+- `music` y `recipe` funcionaran como contenidos complementarios que se abren desde `photo`.
 
 En esta primera etapa la relacion sera unidireccional desde `photo`, porque coincide con la logica de la interfaz:
 
 - columna 1 = `photo`
 - columna 2 = `music`
-- columna 3 = `recipes`
+- columna 3 = `recipe`
 
 Este enfoque mantiene claro el modelo mental del sitio y evita complejidad innecesaria al comienzo.
 
@@ -70,7 +70,7 @@ Se podran crear archive pages para los tres CPTs:
 
 - `archive-photo`
 - `archive-music`
-- `archive-recipes`
+- `archive-recipe`
 
 Sin embargo, no todos estos archives deben usar exactamente el mismo lenguaje de interfaz.
 
@@ -80,7 +80,7 @@ La jerarquia conceptual sera esta:
 
 - `single-photo` = experiencia principal, inmersiva y contextual
 - archives = exploracion, descubrimiento y navegacion
-- `single-music` y `single-recipes` = vistas autonomas y canonicas de contenidos complementarios
+- `single-music` y `single-recipe` = vistas autonomas y canonicas de contenidos complementarios
 
 ## Criterio de layout
 
@@ -90,9 +90,9 @@ Para los archives, la direccion actual es no forzar siempre ese mismo layout de 
 
 La idea central a preservar no es "usar siempre tres columnas", sino que una `photo` pueda abrir capas de contexto relacionadas.
 
-## Singles de `music` y `recipes`
+## Singles de `music` y `recipe`
 
-`music` y `recipes` tendran single propio.
+`music` y `recipe` tendran single propio.
 
 La decision actual es que ambos contenidos deben existir de dos maneras:
 
@@ -108,7 +108,7 @@ Esto permite conservar una navegacion rica dentro del sitio sin perder:
 
 ## Panel lateral y vista autonoma
 
-En los archives de `music` y `recipes`, el detalle ideal no seria un salto inmediato a otra pagina, sino la apertura de un panel lateral o una capa expandida dentro de la misma experiencia de navegacion.
+En los archives de `music` y `recipe`, el detalle ideal no seria un salto inmediato a otra pagina, sino la apertura de un panel lateral o una capa expandida dentro de la misma experiencia de navegacion.
 
 Ese panel funcionaria como vista rapida o vista contextual.
 
@@ -116,8 +116,14 @@ Al mismo tiempo, cada item seguira teniendo acceso a su single autonomo, que fun
 
 En sintesis:
 
-- en navegacion cotidiana, `music` y `recipes` podran abrirse en panel lateral
-- en estructura de contenido, `music` y `recipes` existiran tambien como single pages reales
+- en navegacion cotidiana, `music` y `recipe` podran abrirse en panel lateral
+- en estructura de contenido, `music` y `recipe` existiran tambien como single pages reales
+
+## Fuente de verdad tecnica
+
+La fuente de verdad tecnica para la definicion de los CPTs sera el plugin `strangeday-core`.
+
+Los exports de ACF en `docs` quedan como referencia historica del arranque del proyecto, pero no como lugar principal desde donde se registran `photo`, `music` y `recipe`.
 
 Este enfoque combina una experiencia editorial fluida con una arquitectura de contenido robusta.
 
